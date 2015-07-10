@@ -97,42 +97,37 @@ header, #sidedrawer {
     margin-right: 18px;
 }
 
+.appbar{
+    display: block;
+    position: relative;
+    top: 5px;
+}
 
 .login{
-    /*margin-top: -275px;*/
     pointer-events: none;
     display: none;
-
+    position: fixed;
     z-index: 99;
     opacity: 0;
     transition: 0.4s;
 }
 .login.visible{
-    /*margin-top: 0px;*/
-    pointer-events: none;
+    position: relative;        
     display: block;
-
     z-index: 102;
     opacity: 1;
     transition: 0.5s;
     pointer-events: auto;
 }
-
 .log-access{
-    /*margin-left: -375px;
-    margin-top: -275px;*/
+    position: fixed;
     pointer-events: none;
-
     z-index: 98;
     opacity: 0;
     transition: 0.4s;
 }
-
 .log-access.visible{
-    /*margin-left: 0px;
-    margin-top: 0px;*/
-    pointer-events: none;
-
+    position: relative;
     z-index: 101;
     opacity: 1;
     transition: 0.5s;

@@ -18,50 +18,35 @@ and open the template in the editor.
         <script src="js/general.js"></script>
     </head>
     <body>
-        <nav id="appbar" class="mui-container-fluid">
-            <table width="100%">
-                <tbody><tr class="mui-appbar-height">
-                        <td>
-                            Access Log
-                        </td>
-                        <td class="mui-text-right">
-                            <div id="appbar-social-links" class="mui-hidden-xs">
-                                <a href="https://github.com/muicss/mui"><i class="icon-github"></i></a>
-                                <a href="https://twitter.com/mui_css"><i class="icon-twitter"></i></a>
-                                <a href="/newsletter"><i class="icon-email"></i></a>
-                            </div>
-                            <div class="mui-dropdown">
-                                <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i></a>
-                                <ul class="mui-dropdown-menu mui-dropdown-menu-right" style="top: 31px;">
-                                    <li><a href="/docs/v1/getting-started/introduction">Introduction</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody></table>
-        </nav>
-       
         <div id="main-container">
-            <div id="login" class="login visible">
-                <div class="mui-row">
-                    <div class="mui-col-md-4"></div>
-                    <div class="mui-col-md-4">
-
-                        <legend>Login</legend>
-                        <div class="mui-form-group">
-                            <input type="text" class="mui-form-control" placeholder="Número Cédula" id="mui-user-number">
-                        </div>
-                        <button class="mui-btn mui-btn-default mui-btn-raised" id="button-login">Entrar</button>
-
-                    </div>
-                    <div class="mui-col-md-4"></div>
-                </div>
+            <div id="appbar" class="appbar">
+                <table width="100%">
+                    <tbody>
+                        <tr class="">
+                            <td>
+                                <img src="img/access-app-128.png" />
+                            </td>
+                            <td class="mui-text-right">
+                                <div id="appbar-social-links" class="mui-hidden-xs">
+                                    <a href="https://github.com/muicss/mui"><i class="icon-github"></i></a>
+                                    <a href="https://twitter.com/mui_css"><i class="icon-twitter"></i></a>
+                                    <a href="/newsletter"><i class="icon-email"></i></a>
+                                </div>
+                                <div class="mui-dropdown">
+                                    <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i></a>
+                                    <ul class="mui-dropdown-menu mui-dropdown-menu-right" style="top: 31px;">
+                                        <li><a href="/docs/v1/getting-started/introduction">Introduction</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
             </div>
+            
             <div id="log-access" class="log-access">
                 <div class="mui-row">
                     <div class="mui-col-md-4"></div>
                     <div class="mui-col-md-4">
-                        <form>
                             <legend>ACCESS-LOG</legend>
                             <div class="mui-form-group">
                                 <input type="text" class="mui-form-control" placeholder="Número Cédula" id="idNumber">
@@ -82,8 +67,20 @@ and open the template in the editor.
                             <div class="mui-form-group">
                                 <textarea class="mui-form-control" placeholder="Comentarios" id="comments"></textarea>
                             </div>
-                            <button class="mui-btn mui-btn-default mui-btn-raised" id="btn-in">Entró</button><button class="mui-btn mui-btn-default mui-btn-raised" id="btn-out">Salió</button>
-                        </form>
+                            <button class="mui-btn mui-btn-primary mui-btn-lg" id="btn-in">ENTRADA</button><button class="mui-btn mui-btn-danger mui-btn-lg" id="btn-out">SALIDA</button>
+                    </div>
+                    <div class="mui-col-md-4"></div>
+                </div>
+            </div>
+            <div id="login" class="login visible">
+                <div class="mui-row">
+                    <div class="mui-col-md-4"></div>
+                    <div class="mui-col-md-4">
+                            <legend>Login</legend>
+                            <div class="mui-form-group">
+                                <input type="text" class="mui-form-control" placeholder="Número Cédula" id="mui-user-number">
+                            </div>
+                            <button class="mui-btn mui-btn-default mui-btn-raised" id="button-login">Entrar</button>
                     </div>
                     <div class="mui-col-md-4"></div>
                 </div>
