@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 5, 2015, 10:40:53 PM
+    Author     : Fernando
+*/
+
+a {
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('IcoMoon-Free.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+[class^="icon-"],[class*=" icon-"] {
+    font-family: "icomoon";
+    speak: none;font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#sidedrawer {
+  left: 0;
+}
+
+
+#header, #sidedrawer {
+  transition: left .2s;
+}
+#sidedrawer {
+  bottom: 0;
+  width: 200px;
+  left: -200px;
+  overflow: auto;
+  background-color: #FFF;
+}
+header, #sidedrawer {
+  z-index: 2;
+  transition: left .2s;
+  position: fixed;
+  top: 0;
+}
+#appbar-sidenav-hide, #appbar-sidenav-show {
+  position: relative;
+  left: -2px;
+  margin-right: 18px;
+}
+
+
+.icon-more-vert:before {
+    content: "\e994";
+    text-decoration: none;
+}
+.icon-menu:before {
+    content: "\e902";
+    text-decoration: none;
+}
+
+#appbar-more-vert .icon-more-vert {
+    font-size: 24px;
+    position: relative;
+    top: 3px;
+}
+
+#appbar .icon-keyboard-arrow-right {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+
+#appbar-more-vert, #appbar-sidenav-hide, #appbar-sidenav-show {
+    font-size: 24px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    width: 31px;
+    height: 31px;
+    line-height: 31px;
+    display: inline-block;
+    //color: #FFF;
+}
+
+#appbar-sidenav-hide, #appbar-sidenav-show {
+    position: relative;
+    left: -2px;
+    margin-right: 18px;
+}
+
+
+.login{
+    /*margin-top: -275px;*/
+    pointer-events: none;
+    display: none;
+
+    z-index: 99;
+    opacity: 0;
+    transition: 0.4s;
+}
+.login.visible{
+    /*margin-top: 0px;*/
+    pointer-events: none;
+    display: block;
+
+    z-index: 102;
+    opacity: 1;
+    transition: 0.5s;
+    pointer-events: auto;
+}
+
+.log-access{
+    /*margin-left: -375px;
+    margin-top: -275px;*/
+    pointer-events: none;
+
+    z-index: 98;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.log-access.visible{
+    /*margin-left: 0px;
+    margin-top: 0px;*/
+    pointer-events: none;
+
+    z-index: 101;
+    opacity: 1;
+    transition: 0.5s;
+    pointer-events: auto;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ACCESS APP",
+  "description": "Control de Acceso",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+  "icons": { "16": "img/access-app-16.png", "128": "img/access-app-128.png" },
+  "permissions": [
+    "serial",
+    "<all_urls>",
+    "storage"
+  ]
+}
