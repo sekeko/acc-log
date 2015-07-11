@@ -15,6 +15,7 @@ and open the template in the editor.
         <script src="js/mui.min.js"></script>
         <script src="js/logic.js"></script>
         <script src="js/login.js"></script>
+        <script src="js/settings.js"></script>
         <script src="js/general.js"></script>
     </head>
     <body>
@@ -35,39 +36,39 @@ and open the template in the editor.
                                 <div class="mui-dropdown">
                                     <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i></a>
                                     <ul class="mui-dropdown-menu mui-dropdown-menu-right" style="top: 31px;">
-                                        <li><a href="/docs/v1/getting-started/introduction">Introduction</a></li>
+                                        <li><span id="btn-settings" >CONFIGURACION</span></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
                     </tbody></table>
             </div>
-            
+
             <div id="log-access" class="log-access">
                 <div class="mui-row">
                     <div class="mui-col-md-4"></div>
                     <div class="mui-col-md-4">
-                            <legend>ACCESS-LOG</legend>
-                            <div class="mui-form-group">
-                                <input type="text" class="mui-form-control" placeholder="Número Cédula" id="idNumber">
-                            </div>
-                            <div class="mui-form-group">
-                                <input type="text" class="mui-form-control" placeholder="Nombre Completo" id="fullName">
-                            </div>
-                            <div class="mui-form-group">
-                                <input type="text" class="mui-form-control" placeholder="Fecha Nacimiento" id="birthDate">
-                            </div>
-                            <div class="mui-form-group">
-                                <input type="text" class="mui-form-control" placeholder="Fecha Vencimiento" id="expiryDate">
-                            </div>
-                            <div class="mui-form-group">
-                                <input type="text" class="mui-form-control" placeholder="Género" id="gender">
-                            </div>
-                            <div class="mui-select" id="mui-select-placeTo"></div>
-                            <div class="mui-form-group">
-                                <textarea class="mui-form-control" placeholder="Comentarios" id="comments"></textarea>
-                            </div>
-                            <button class="mui-btn mui-btn-primary mui-btn-lg" id="btn-in">ENTRADA</button><button class="mui-btn mui-btn-danger mui-btn-lg" id="btn-out">SALIDA</button>
+                        <legend>ACCESS-LOG</legend>
+                        <div class="mui-form-group">
+                            <input type="text" class="mui-form-control" placeholder="Número Cédula" id="idNumber">
+                        </div>
+                        <div class="mui-form-group">
+                            <input type="text" class="mui-form-control" placeholder="Nombre Completo" id="fullName">
+                        </div>
+                        <div class="mui-form-group">
+                            <input type="text" class="mui-form-control" placeholder="Fecha Nacimiento" id="birthDate">
+                        </div>
+                        <div class="mui-form-group">
+                            <input type="text" class="mui-form-control" placeholder="Fecha Vencimiento" id="expiryDate">
+                        </div>
+                        <div class="mui-form-group">
+                            <input type="text" class="mui-form-control" placeholder="Género" id="gender">
+                        </div>
+                        <div class="mui-select" id="mui-select-placeTo"></div>
+                        <div class="mui-form-group">
+                            <textarea class="mui-form-control" placeholder="Comentarios" id="comments"></textarea>
+                        </div>
+                        <button class="mui-btn mui-btn-primary mui-btn-lg" id="btn-in">ENTRADA</button><button class="mui-btn mui-btn-danger mui-btn-lg" id="btn-out">SALIDA</button>
                     </div>
                     <div class="mui-col-md-4"></div>
                 </div>
@@ -76,14 +77,35 @@ and open the template in the editor.
                 <div class="mui-row">
                     <div class="mui-col-md-4"></div>
                     <div class="mui-col-md-4">
-                            <legend>Login</legend>
-                            <div class="mui-form-group">
-                                <input type="text" class="mui-form-control" placeholder="Número Cédula" id="mui-user-number">
-                            </div>
-                            <button class="mui-btn mui-btn-default mui-btn-raised" id="button-login">Entrar</button>
+                        <legend>Login</legend>
+                        <div class="mui-form-group">
+                            <input type="text" class="mui-form-control" placeholder="Número Cédula" id="mui-user-number">
+                        </div>
+                        <button class="mui-btn mui-btn-default mui-btn-raised" id="button-login">Entrar</button>
                     </div>
                     <div class="mui-col-md-4"></div>
                 </div>
+            </div>
+            
+            <div id="settings-page" class="single-product page">
+
+                <div class="overlay"></div>
+
+                <div class="preview-large">
+                    <h3>CONFIGURACION</h3>
+                    
+                    <div class="mui-row">
+                    <div class="mui-col-md-4"></div>
+                    <div class="mui-col-md-4">
+                        <legend>Seleccione el puerto</legend>
+                        <div class="mui-select" id="mui-select-comport-container"></div>
+                    </div>
+                    <div class="mui-col-md-4"></div>
+                </div>
+
+                    <span class="close-settings" id="btn-close-settings">×</span>
+                </div>
+
             </div>
         </div>
     </body>
