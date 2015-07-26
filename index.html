@@ -13,9 +13,9 @@ and open the template in the editor.
         <link href="css/mui.min.css" rel="stylesheet" type="text/css" />
         <link href="css/main.css" rel="stylesheet" type="text/css" />
         <script src="js/mui.min.js"></script>
+        <script src="js/settings.js"></script>
         <script src="js/logic.js"></script>
         <script src="js/login.js"></script>
-        <script src="js/settings.js"></script>
         <script src="js/general.js"></script>
     </head>
     <body>
@@ -35,8 +35,8 @@ and open the template in the editor.
                                 </div>
                                 <div class="mui-dropdown">
                                     <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i></a>
-                                    <ul class="mui-dropdown-menu mui-dropdown-menu-right" style="top: 31px;">
-                                        <li><span id="btn-settings" >CONFIGURACION</span></li>
+                                    <ul class="mui-dropdown-menu mui-dropdown-menu-right" style="top: 31px; ">
+                                        <li><a id="btn-settings" >CONFIGURACIONES</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -86,26 +86,23 @@ and open the template in the editor.
                     <div class="mui-col-md-4"></div>
                 </div>
             </div>
-            
+
             <div id="settings-page" class="single-product page">
 
                 <div class="overlay"></div>
 
                 <div class="preview-large">
                     <h3>CONFIGURACION</h3>
-                    
                     <div class="mui-row">
-                    <div class="mui-col-md-4"></div>
-                    <div class="mui-col-md-4">
-                        <legend>Seleccione el puerto</legend>
-                        <div class="mui-select" id="mui-select-comport-container"></div>
+                        <div class="mui-col-md-4"></div>
+                        <div class="mui-col-md-4">
+                            <legend>Seleccione el puerto</legend><span id="settings-error-message" class="error-message"></span>
+                            <div class="mui-select" id="mui-select-comport-container"></div>
+                        </div>
+                        <div class="mui-col-md-4"></div>
                     </div>
-                    <div class="mui-col-md-4"></div>
-                </div>
-
                     <span class="close-settings" id="btn-close-settings">×</span>
                 </div>
-
             </div>
         </div>
     </body>

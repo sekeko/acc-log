@@ -110,10 +110,12 @@ SerialConnection.prototype.onConnectComplete = function (connectionInfo) {
         log("Connection failed.");
         return;
     }
-    this.connectionId = connectionInfo.connectionId;
-    chrome.serial.onReceive.addListener(this.boundOnReceive);
-    chrome.serial.onReceiveError.addListener(this.boundOnReceiveError);
-    this.onConnect.dispatch();
+    else {
+        this.connectionId = connectionInfo.connectionId;
+        chrome.serial.onReceive.addListener(this.boundOnReceive);
+        chrome.serial.onReceiveError.addListener(this.boundOnReceiveError);
+        this.onConnect.dispatch();
+    }
 };
 
 SerialConnection.prototype.onReceive = function (receiveInfo) {
@@ -140,14 +142,14 @@ SerialConnection.prototype.onReceiveError = function (errorInfo) {
 
 SerialConnection.prototype.connect = function (path) {
     /*
-    var onGetDevices = function (ports) {
-        for (var i = 0; i < ports.length; i++) {
-            console.log(ports[i].path);
-        }
-    }
-    chrome.serial.getDevices(onGetDevices);
-    */
-    //serial.connect(path, this.onConnectComplete.bind(this));
+     var onGetDevices = function (ports) {
+     for (var i = 0; i < ports.length; i++) {
+     console.log(ports[i].path);
+     }
+     }
+     chrome.serial.getDevices(onGetDevices);
+     */
+    serial.connect(path, this.onConnectComplete.bind(this));
 };
 
 SerialConnection.prototype.send = function (msg) {
@@ -173,7 +175,6 @@ var connection = new SerialConnection();
 
 connection.onConnect.addListener(function () {
     log('connected to: ' + DEVICE_PATH);
-    //connection.send("hello arduino");
 });
 
 connection.onReadLine.addListener(function (line) {

@@ -8,6 +8,14 @@ and open the template in the editor.
     Author     : Fernando
 */
 
+body{
+    margin: 20px 20px 20px 20px;
+    background-image: url("../img/access-app-128.png");
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-position-y: 250px;
+}
+
 a {
     text-decoration: none;
 }
@@ -134,6 +142,10 @@ header, #sidedrawer {
     pointer-events: auto;
 }
 
+.error-message{
+    font-weight: bold;
+    color: red;
+}
 
 /*---------------------------
         SETTINGS Page
@@ -175,17 +187,14 @@ header, #sidedrawer {
     z-index: 102;
     opacity: 0;
     transition: 0.4s;
-
+    
+    padding: 20px;
 }
 
 .single-product.visible .preview-large{
     opacity: 1;
     /*transition: 1.4s;*/
     pointer-events: auto;
-}
-
-.preview-large h3{
-    margin-top: 20px;
 }
 
 .preview-large img{
