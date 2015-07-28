@@ -18,11 +18,12 @@ var ab2str = function (buf) {
             var genero = getValue(6, 91, 1, bufView);
             var fechaNacimiento = getValue(7, 92, 8, bufView);
             var fechaVencimiento = getValue(15, 100, 8, bufView);
-            getUserByNumber(numCedula, "http://localhost:9980/acc/?method=getPersonByNumber&post_data_string={%22user_number%22:%22" + numCedula + "%22}", function (data) {
-                console.log(data.person.comments);
-                $("#comments").val(data.person.comments);
-            });
-            loadUserData(numCedula, nombreCompleto + " " + primerApellido + " " + segundoApellido, genero, fechaNacimiento, fechaVencimiento);
+//            getUserByNumber(numCedula, "http://localhost:9980/acc/?method=getPersonByNumber&post_data_string={%22user_number%22:%22" + numCedula + "%22}", function (data) {
+//                console.log(data.person.comments);
+//                $("#comments").val(data.person.comments);
+//            });
+            //loadUserData(numCedula, nombreCompleto + " " + primerApellido + " " + segundoApellido, genero, fechaNacimiento, fechaVencimiento);
+            getUserByNumber(numCedula);
             break;
     }
     var numCedula = getValue(0, 0, 9, bufView);
@@ -108,9 +109,11 @@ var SerialConnection = function () {
 SerialConnection.prototype.onConnectComplete = function (connectionInfo) {
     if (!connectionInfo) {
         log("Connection failed.");
+        showErrorMessage("main-error-message"," Fail device connection! ");
         return;
     }
     else {
+        cleanErrorMessage("main-error-message");
         this.connectionId = connectionInfo.connectionId;
         chrome.serial.onReceive.addListener(this.boundOnReceive);
         chrome.serial.onReceiveError.addListener(this.boundOnReceiveError);
@@ -141,15 +144,14 @@ SerialConnection.prototype.onReceiveError = function (errorInfo) {
 };
 
 SerialConnection.prototype.connect = function (path) {
-    /*
-     var onGetDevices = function (ports) {
-     for (var i = 0; i < ports.length; i++) {
-     console.log(ports[i].path);
-     }
-     }
-     chrome.serial.getDevices(onGetDevices);
-     */
-    serial.connect(path, this.onConnectComplete.bind(this));
+    console.log("path:" + path);
+    if (path === undefined || path === ""){
+        console.log("No COM port configured!");
+        showErrorMessage("main-error-message"," No COM port configured! ");
+    }
+    else{
+        serial.connect(path, this.onConnectComplete.bind(this));
+    }
 };
 
 SerialConnection.prototype.send = function (msg) {
@@ -174,14 +176,14 @@ SerialConnection.prototype.disconnect = function () {
 var connection = new SerialConnection();
 
 connection.onConnect.addListener(function () {
-    log('connected to: ' + DEVICE_PATH);
+    log('connected to: ' + getSetting('COMPort'));
 });
 
 connection.onReadLine.addListener(function (line) {
     log('read line: ' + line);
 });
 
-connection.connect(DEVICE_PATH);
+connection.connect(getSetting('COMPort'));
 
 function log(msg) {
     console.log(msg);

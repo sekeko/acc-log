@@ -1,15 +1,15 @@
 $(function () {
-
-    //loadCOMPorts();
-    //console.log("settings load");
-
     $("#btn-settings").click(function () {
         console.log("click on btn-settings");
         gotoSettings();
     });
 
     $("#btn-close-settings").click(function () {
-        console.log("click on btn-close-settings");
+        var settings = JSON.stringify({
+            'APIURL': $('#mui-user-apiURL').val(),
+            'COMPort': $('#mui-select-comport').find(":selected").text(),
+        });
+        saveSettings(settings);
         closeSettings();
     });
 });
@@ -26,19 +26,14 @@ var closeSettings = function () {
 }
 
 var loadCOMPorts = function () {
-    console.log("call loadCOMPorts");
     chrome.serial.getDevices(function (ports) {
-        console.log("call onGetDevices");
-        console.log(ports);
         if (ports.length <= 0) {
-            console.log("no ports");
-            $("#settings-error-message").html(" No ports ");
+            showErrorMessage("settings-error-message"," No ports ");
         } else {
-            $("#settings-error-message").html("");
+            cleanErrorMessage("settings-error-message");
             var strControl = "<select id='mui-select-comport'>";
             for (var i = 0; i < ports.length; i++) {
                 strControl += "<option value='" + ports[i].path + "'>" + ports[i].path + "</option>";
-                console.log(ports[i].path);
             }
             strControl += "</select>";
             $("#mui-select-comport-container").html(strControl);

@@ -12,40 +12,45 @@ and open the template in the editor.
         <script src="js/jquery-2.1.4.min.js"></script>
         <link href="css/mui.min.css" rel="stylesheet" type="text/css" />
         <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <script src="js/date.js"></script>
         <script src="js/mui.min.js"></script>
+        <script src="js/general.js"></script>
         <script src="js/settings.js"></script>
         <script src="js/logic.js"></script>
         <script src="js/login.js"></script>
-        <script src="js/general.js"></script>
+        <script src="js/controls.js"></script>
+        <script src="js/log-access.js"></script>
     </head>
     <body>
         <div id="main-container">
             <div id="appbar" class="appbar">
                 <table width="100%">
                     <tbody>
-                        <tr class="">
+                        <tr>
                             <td>
-                                <img src="img/access-app-128.png" />
+                                <!--<img src="img/access-app-128.png" />-->
+                                <p style="font-size: 80px">APP TITTLE</p>
+                                <span id="main-error-message" class="error-message"></span>
                             </td>
                             <td class="mui-text-right">
-                                <div id="appbar-social-links" class="mui-hidden-xs">
-                                    <a href="https://github.com/muicss/mui"><i class="icon-github"></i></a>
-                                    <a href="https://twitter.com/mui_css"><i class="icon-twitter"></i></a>
-                                    <a href="/newsletter"><i class="icon-email"></i></a>
-                                </div>
                                 <div class="mui-dropdown">
                                     <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i></a>
-                                    <ul class="mui-dropdown-menu mui-dropdown-menu-right" style="top: 31px; ">
+                                    <ul class="mui-dropdown-menu mui-dropdown-menu-right">
                                         <li><a id="btn-settings" >CONFIGURACIONES</a></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
-                    </tbody></table>
+                    </tbody>
+                </table>
             </div>
 
             <div id="log-access" class="log-access">
                 <div class="mui-row">
+                    <input type="hidden" id="personId">
+                    <input type="hidden" id="birthDate">
+                    <input type="hidden" id="expiryDate">
+                    <input type="hidden" id="gender">
                     <div class="mui-col-md-4"></div>
                     <div class="mui-col-md-4">
                         <legend>ACCESS-LOG</legend>
@@ -54,15 +59,6 @@ and open the template in the editor.
                         </div>
                         <div class="mui-form-group">
                             <input type="text" class="mui-form-control" placeholder="Nombre Completo" id="fullName">
-                        </div>
-                        <div class="mui-form-group">
-                            <input type="text" class="mui-form-control" placeholder="Fecha Nacimiento" id="birthDate">
-                        </div>
-                        <div class="mui-form-group">
-                            <input type="text" class="mui-form-control" placeholder="Fecha Vencimiento" id="expiryDate">
-                        </div>
-                        <div class="mui-form-group">
-                            <input type="text" class="mui-form-control" placeholder="Género" id="gender">
                         </div>
                         <div class="mui-select" id="mui-select-placeTo"></div>
                         <div class="mui-form-group">
@@ -98,6 +94,14 @@ and open the template in the editor.
                         <div class="mui-col-md-4">
                             <legend>Seleccione el puerto</legend><span id="settings-error-message" class="error-message"></span>
                             <div class="mui-select" id="mui-select-comport-container"></div>
+                        </div>
+                        <div class="mui-col-md-4"></div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="mui-col-md-4"></div>
+                        <div class="mui-col-md-4">
+                            <legend>API URL</legend><span id="settings-error-message" class="error-message"></span>
+                            <input type="text" class="mui-form-control" placeholder="API URL" id="mui-user-apiURL">
                         </div>
                         <div class="mui-col-md-4"></div>
                     </div>
