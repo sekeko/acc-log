@@ -28,8 +28,8 @@ and open the template in the editor.
                     <tbody>
                         <tr>
                             <td>
-                                <!--<img src="img/access-app-128.png" />-->
-                                <p style="font-size: 80px">APP TITTLE</p>
+                                
+                                <p style="font-size: 80px"><img src="img/access-app-128.png" />APP TITTLE</p>
                                 <span id="main-error-message" class="error-message"></span>
                             </td>
                             <td class="mui-text-right">
@@ -44,13 +44,15 @@ and open the template in the editor.
                     </tbody>
                 </table>
             </div>
-
+            <div id="log-access-report" class="log-access-report">
+                
+            </div>
             <div id="log-access" class="log-access">
                 <div class="mui-row">
-                    <input type="hidden" id="personId">
-                    <input type="hidden" id="birthDate">
-                    <input type="hidden" id="expiryDate">
-                    <input type="hidden" id="gender">
+                    <input type="hidden" id="personId" value="0">
+                    <input type="hidden" id="birthDate" value="2000-01-01">
+                    <input type="hidden" id="expiryDate" value="2000-01-01">
+                    <input type="hidden" id="gender" value="N">
                     <div class="mui-col-md-4"></div>
                     <div class="mui-col-md-4">
                         <legend>ACCESS-LOG</legend>
@@ -82,7 +84,6 @@ and open the template in the editor.
                     <div class="mui-col-md-4"></div>
                 </div>
             </div>
-
             <div id="settings-page" class="single-product page">
 
                 <div class="overlay"></div>
@@ -108,6 +109,20 @@ and open the template in the editor.
                     <span class="close-settings" id="btn-close-settings">×</span>
                 </div>
             </div>
+            
+            <div id="report-page" class="single-product page">
+
+                <div class="overlay"></div>
+
+                <div class="preview-large">
+                    <h3>REPORTE</h3>
+                    <div class="mui-row">
+                        <div class="mui-col-md-4"></div>
+                    </div>
+                    <span class="close-settings" id="btn-close-settings">×</span>
+                </div>
+            </div>
+            
         </div>
     </body>
 </html>

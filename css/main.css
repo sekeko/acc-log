@@ -1,19 +1,12 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jul 5, 2015, 10:40:53 PM
-    Author     : Fernando
-*/
 
 body{
     margin: 20px 20px 20px 20px;
+    /*
     background-image: url("../img/access-app-128.png");
     background-repeat: no-repeat;
     background-position: center; 
     background-position-y: 250px;
+    */
 }
 
 a {

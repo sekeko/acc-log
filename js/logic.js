@@ -18,12 +18,18 @@ var ab2str = function (buf) {
             var genero = getValue(6, 91, 1, bufView);
             var fechaNacimiento = getValue(7, 92, 8, bufView);
             var fechaVencimiento = getValue(15, 100, 8, bufView);
+            var person = {
+                "number": numCedula
+                , "fullname": nombreCompleto.replace(/\u0000/g,"") + " " + primerApellido.replace(/\u0000/g,"") + " " + segundoApellido.replace(/\u0000/g,"")
+                , "gender": genero
+                , "birth": fechaNacimiento.substring(0,4)+'-'+fechaNacimiento.substring(4,6)+'-'+fechaNacimiento.substring(6,8)
+                , "expiry": fechaVencimiento.substring(0,4)+'-'+fechaVencimiento.substring(4,6)+'-'+fechaVencimiento.substring(6,8)};
 //            getUserByNumber(numCedula, "http://localhost:9980/acc/?method=getPersonByNumber&post_data_string={%22user_number%22:%22" + numCedula + "%22}", function (data) {
 //                console.log(data.person.comments);
 //                $("#comments").val(data.person.comments);
 //            });
             //loadUserData(numCedula, nombreCompleto + " " + primerApellido + " " + segundoApellido, genero, fechaNacimiento, fechaVencimiento);
-            getUserByNumber(numCedula);
+            getUserByNumber(numCedula,person);
             break;
     }
     var numCedula = getValue(0, 0, 9, bufView);
@@ -109,7 +115,7 @@ var SerialConnection = function () {
 SerialConnection.prototype.onConnectComplete = function (connectionInfo) {
     if (!connectionInfo) {
         log("Connection failed.");
-        showErrorMessage("main-error-message"," Fail device connection! ");
+        showErrorMessage("main-error-message", " Fail device connection! ");
         return;
     }
     else {
@@ -145,11 +151,11 @@ SerialConnection.prototype.onReceiveError = function (errorInfo) {
 
 SerialConnection.prototype.connect = function (path) {
     console.log("path:" + path);
-    if (path === undefined || path === ""){
+    if (path === undefined || path === "") {
         console.log("No COM port configured!");
-        showErrorMessage("main-error-message"," No COM port configured! ");
+        showErrorMessage("main-error-message", " No COM port configured! ");
     }
-    else{
+    else {
         serial.connect(path, this.onConnectComplete.bind(this));
     }
 };

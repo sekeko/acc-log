@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var userIdLogged;
+
 var setCurrentDisplayName = function (displayName) {
     window.location.hash = displayName;
 };
@@ -16,7 +18,7 @@ var showErrorMessage = function (labelName, message) {
     $("#" + labelName).html(message);
 };
 var cleanErrorMessage = function (labelName) {
-    $("#" + labelName).html();
+    $("#" + labelName).html("");
 };
 //var getCOMPortConfigured = function () {
 //    var returnVal = $('#mui-select-comport').find(":selected").text();
@@ -50,5 +52,10 @@ var getSetting = function(name){
 };
 
 var getUserIdLogged = function(){
-    return 1;
+    //return 1;
+    return userIdLogged;
+}
+var setUserIdLogged = function(userId){
+    //return 1;
+    userIdLogged = userId;
 }
