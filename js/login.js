@@ -4,14 +4,19 @@ $(function () {
 
     $("#button-login").click(function () {
         var userNumber = $("#mui-user-number").val();
+        $("#mui-user-number").val("");
         loginUser(userNumber);
     });
     
+    $("#btn-logout").click(function () {
+        logout();
+    });
+
 });
 
 var loginUser = function (userNumber) {
     //var apiURL = "http://localhost:81/acc-log-api/?method=login&post_data_string={%22user_number%22:%22" + userNumber + "%22}";
-    var apiURL = getSetting('APIURL')+"?method=login&post_data_string={%22user_number%22:%22" + userNumber + "%22}";
+    var apiURL = getSetting('APIURL') + "?method=login&post_data_string={%22user_number%22:%22" + userNumber + "%22}";
     //console.log(apiURL);
     $.getJSON(apiURL, {
         format: "json"
@@ -28,12 +33,12 @@ var loginUser = function (userNumber) {
                         setCurrentDisplayName("accesslog");
                     }
                 }
-                else{
-                    showErrorMessage("main-error-message", " Login Fail! ");  
+                else {
+                    showErrorMessage("main-error-message", " Login Fail! ");
                 }
                 //console.log(data);
             });
-            //.error(fuction(data){console.log(data);});
+    //.error(fuction(data){console.log(data);});
 };
 
 var logUserAccess = function (accessType) {
@@ -55,3 +60,10 @@ var logUserAccess = function (accessType) {
                 //console.log(data);
             });
 };
+
+var logout = function () {
+    setUserIdLogged("");
+    $('#login').addClass('visible');
+    $('.log-access').removeClass('visible');
+    setCurrentDisplayName("login");
+}

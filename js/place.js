@@ -40,3 +40,7 @@ var loadPlaces =  function (data){
         ]
     });
 }
+
+var addPlace = function(){
+    
+}

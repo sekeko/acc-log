@@ -35,15 +35,15 @@ var cleanErrorMessage = function (labelName) {
 
 var saveSettings = function (settings) {
     chrome.storage.local.set({"settings": JSON.parse(settings)}, function () {
-        console.log('Settings saved');
+        //console.log('Settings saved');
     });
 };
 
 var getSetting = function (name) {
     var returnVal = 'http://localhost:81/acc-log-api/';
     chrome.storage.local.get("settings", function (result) {
-        console.log(result);
-        console.log(result.settings[name]);
+        //console.log(result);
+        //console.log(result.settings[name]);
         returnVal = result.settings[name];
     });
     if (name == 'COMPort') {
