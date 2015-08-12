@@ -157,7 +157,7 @@ header, #sidedrawer {
     left: 0;
     background-color: #282b2c;
     /*transition: 0.6s;*/
-    z-index: 100;
+    z-index: 150;
 }
 
 .single-product.visible .overlay{
@@ -178,11 +178,14 @@ header, #sidedrawer {
     border-radius: 6px;
     background-color:  #ffffff;
 
-    z-index: 102;
+    z-index: 201;
     opacity: 0;
     transition: 0.4s;
     
     padding: 20px;
+    
+    overflow: auto;
+    overflow-x:hidden;
 }
 
 .single-product.visible .preview-large{
@@ -221,3 +224,66 @@ header, #sidedrawer {
     padding-bottom: 20px;
     text-align: center;
 }
+
+/*---------------------------
+        SETTINGS Page
+----------------------------*/
+
+
+
+/************S I D E B A R************************************************************/
+.sidebar.left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    background: #448AFF;
+}
+
+.sidebar.right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 270px;
+    background: #448AFF;
+    z-index: 200;
+}
+
+.sidebar.bottom {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 270px;
+    background: #03A9F4;
+}
+
+.sidebar.top {
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 270px;
+    background: #03A9F4;
+}
+
+.sidebars > .sidebar {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.64);
+    position: fixed;
+    color: white;
+    padding: 30px;
+    font-size: 2em;
+    text-align: center;
+}
+/************S I D E B A R*****************************************************E N D**/
+
+/************D A T A T A B L E S************************************************************/
+th {
+    font-size:10px !important;
+}
+td {
+    font-size:10px !important;
+}
+.dataTables_wrapper {
+    font-size: 10px !important;
+}
+/************D A T A T A B L E S*****************************************************E N D**/

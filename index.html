@@ -10,16 +10,21 @@ and open the template in the editor.
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery.sidebar.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
         <link href="css/mui.min.css" rel="stylesheet" type="text/css" />
         <link href="css/main.css" rel="stylesheet" type="text/css" />
         <script src="js/date.js"></script>
         <script src="js/mui.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
         <script src="js/general.js"></script>
         <script src="js/settings.js"></script>
         <script src="js/logic.js"></script>
         <script src="js/login.js"></script>
         <script src="js/controls.js"></script>
         <script src="js/log-access.js"></script>
+        <script src="js/report.js"></script>
+        <script src="js/place.js"></script>
     </head>
     <body>
         <div id="main-container">
@@ -28,24 +33,18 @@ and open the template in the editor.
                     <tbody>
                         <tr>
                             <td>
-                                
+
                                 <p style="font-size: 80px"><img src="img/access-app-128.png" />APP TITTLE</p>
                                 <span id="main-error-message" class="error-message"></span>
                             </td>
                             <td class="mui-text-right">
-                                <div class="mui-dropdown">
-                                    <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i></a>
-                                    <ul class="mui-dropdown-menu mui-dropdown-menu-right">
-                                        <li><a id="btn-settings" >CONFIGURACIONES</a></li>
-                                    </ul>
-                                </div>
+                                <a id="appbar-more-vert">
+                                    <i class="icon-more-vert"></i>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div id="log-access-report" class="log-access-report">
-                
             </div>
             <div id="log-access" class="log-access">
                 <div class="mui-row">
@@ -71,6 +70,7 @@ and open the template in the editor.
                     <div class="mui-col-md-4"></div>
                 </div>
             </div>
+            <!-- L O G I N -->
             <div id="login" class="login visible">
                 <div class="mui-row">
                     <div class="mui-col-md-4"></div>
@@ -84,6 +84,7 @@ and open the template in the editor.
                     <div class="mui-col-md-4"></div>
                 </div>
             </div>
+            <!-- S E T T I N G S -->
             <div id="settings-page" class="single-product page">
 
                 <div class="overlay"></div>
@@ -109,20 +110,79 @@ and open the template in the editor.
                     <span class="close-settings" id="btn-close-settings">×</span>
                 </div>
             </div>
-            
             <div id="report-page" class="single-product page">
-
                 <div class="overlay"></div>
-
                 <div class="preview-large">
                     <h3>REPORTE</h3>
                     <div class="mui-row">
-                        <div class="mui-col-md-4"></div>
+                        <div class="mui-col-md-4">
+                            <table id="example" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>FECHA</th>
+                                        <th>TIPO</th>
+                                        <th>LUGAR</th>
+                                        <th>NOMBRE</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>FECHA</th>
+                                        <th>TIPO</th>
+                                        <th>LUGAR</th>
+                                        <th>NOMBRE</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
-                    <span class="close-settings" id="btn-close-settings">×</span>
+                    <span class="close-settings" id="btn-close-report">×</span>
                 </div>
             </div>
-            
+            <div id="place-page" class="single-product page">
+                <div class="overlay"></div>
+                <div class="preview-large">
+                    <h3>LOCALIDADES</h3>
+                    <div class="mui-row">
+                        <div class="mui-col-xs-6">
+                            <div class="mui-form-group">
+                                <input type="text" class="mui-form-control" placeholder="Localidad" id="place-name">
+                            </div>
+                            <div class="mui-form-group">
+                                <textarea class="mui-form-control" placeholder="Comentarios" id="place-comments"></textarea>
+                            </div>
+                            <button class="mui-btn mui-btn-primary mui-btn-lg" id="save-place">Agregar</button>
+                        </div>
+                        <div class="mui-col-xs-6">
+                            <table id="table-place" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>LOCALIDAD</th>
+                                        <th>COMENTARIOS</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>LOCALIDAD</th>
+                                        <th>COMENTARIOS</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <span class="close-settings" id="btn-close-place">×</span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebars">
+            <div id="right-sidebar" class="sidebar right">
+                <span class="close-settings" id="close-right-side-menu">×</span>
+                <a id="btn-settings" >CONFIGURACIONES</a>
+                <a id="btn-report" >REPORTE</a>
+                <a id="btn-place" >LOCALIDADES</a>
+            </div>
         </div>
     </body>
 </html>

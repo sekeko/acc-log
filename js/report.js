@@ -5,20 +5,33 @@
  */
 
 $(function () {
+
+    $('#example').dataTable({
+        "ajax": 'http://localhost:81/acc-log-api/?method=getAccessLog',
+        "columns": [
+            {"data": "FECHA"},
+            {"data": "TIPO"},
+            {"data": "LUGAR"},
+            {"data": "NOMBRE"}
+        ]
+    });
+
     $("#btn-report").click(function () {
         console.log("click on btn-report");
         gotoReport();
     });
 
-    $("#btn-close-settings").click(function () {
-        
-        //closeSettings();
+    $("#btn-close-report").click(function () {
+        closeReport();
     });
 });
 
-function gotoReport() {
-    //setCurrentDisplayName("settings");
+var closeReport = function () {
+    $('#report-page').removeClass('visible');
+};
+
+var gotoReport = function () {
     $('#report-page').addClass('visible');
-}
-;
+};
+
 
