@@ -238,7 +238,7 @@ header, #sidedrawer {
     left: 0;
     bottom: 0;
     width: 270px;
-    background: #448AFF;
+    background: #78909C;
 }
 
 .sidebar.right {
@@ -246,7 +246,7 @@ header, #sidedrawer {
     right: 0;
     bottom: 0;
     width: 270px;
-    background: #448AFF;
+    background: #78909C;
     z-index: 200;
 }
 
@@ -255,7 +255,7 @@ header, #sidedrawer {
     right: 0;
     bottom: 0;
     height: 270px;
-    background: #03A9F4;
+    background: #78909C;
 }
 
 .sidebar.top {
@@ -263,7 +263,7 @@ header, #sidedrawer {
     right: 0;
     top: 0;
     height: 270px;
-    background: #03A9F4;
+    background: #78909C;
 }
 
 .sidebars > .sidebar {

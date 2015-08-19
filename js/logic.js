@@ -179,17 +179,17 @@ SerialConnection.prototype.disconnect = function () {
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
-var connection = new SerialConnection();
-
-connection.onConnect.addListener(function () {
-    log('connected to: ' + getSetting('COMPort'));
-});
-
-connection.onReadLine.addListener(function (line) {
-    log('read line: ' + line);
-});
-
-connection.connect(getSetting('COMPort'));
+//var connection = new SerialConnection();
+//
+//connection.onConnect.addListener(function () {
+//    log('connected to: ' + getSetting('COMPort'));
+//});
+//
+//connection.onReadLine.addListener(function (line) {
+//    log('read line: ' + line);
+//});
+//
+//connection.connect(getSetting('COMPort'));
 
 function log(msg) {
     console.log(msg);

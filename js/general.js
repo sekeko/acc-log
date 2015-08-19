@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var userIdLogged;
+var userIdLogged, appAPIURL, appCOMPort = 'COM11';
 
 $(function () {
+
+    loadSettingsMemory();
+
     $("#right-sidebar").sidebar({side: "right"});
     $("#appbar-more-vert").on("click", function () {
         $("#right-sidebar").trigger("sidebar:open");
@@ -35,22 +38,41 @@ var cleanErrorMessage = function (labelName) {
 
 var saveSettings = function (settings) {
     chrome.storage.local.set({"settings": JSON.parse(settings)}, function () {
-        //console.log('Settings saved');
+        console.log('Settings saved');
     });
 };
 
 var getSetting = function (name) {
-    var returnVal = 'http://localhost:81/acc-log-api/';
-    chrome.storage.local.get("settings", function (result) {
-        //console.log(result);
-        //console.log(result.settings[name]);
-        returnVal = result.settings[name];
-    });
+    var returnVal = '';
+
     if (name == 'COMPort') {
-        returnVal = 'COM11';
+        returnVal = appCOMPort;
+    }
+
+    if (name == 'APIURL') {
+        returnVal = appAPIURL;
     }
     return returnVal;
 };
+
+var loadSettingsMemory = function () {
+    chrome.storage.local.get("settings", function (result) {
+        console.log(result);
+        //console.log(result.settings[name]);
+        appAPIURL = result.settings["APIURL"];
+        appCOMPort = result.settings["COMPort"];
+
+        var connection = new SerialConnection();
+        connection.onConnect.addListener(function () {
+            log('connected to: ' + getSetting('COMPort'));
+        });
+        connection.onReadLine.addListener(function (line) {
+            log('read line: ' + line);
+        });
+        connection.connect(getSetting('COMPort'));
+
+    });
+}
 
 var getUserIdLogged = function () {
     //return 1;

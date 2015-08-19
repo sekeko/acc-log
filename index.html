@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="utf-8">
@@ -17,14 +11,16 @@ and open the template in the editor.
         <script src="js/date.js"></script>
         <script src="js/mui.min.js"></script>
         <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/logic.js"></script>
         <script src="js/general.js"></script>
         <script src="js/settings.js"></script>
-        <script src="js/logic.js"></script>
         <script src="js/login.js"></script>
         <script src="js/controls.js"></script>
         <script src="js/log-access.js"></script>
         <script src="js/report.js"></script>
         <script src="js/place.js"></script>
+        <script src="js/user.js"></script>
+        <script src="js/userComments.js"></script>
     </head>
     <body>
         <div id="main-container">
@@ -34,7 +30,7 @@ and open the template in the editor.
                         <tr>
                             <td>
 
-                                <p style="font-size: 80px"><img src="img/access-app-128.png" />APP TITTLE</p>
+                                <p style="font-size: 80px"><img src="img/access-app-128.png" />B I T A C O R A</p>
                                 <span id="main-error-message" class="error-message"></span>
                             </td>
                             <td class="mui-text-right">
@@ -110,6 +106,7 @@ and open the template in the editor.
                     <span class="close-settings" id="btn-close-settings">×</span>
                 </div>
             </div>
+            <!-- R E P O R T -->
             <div id="report-page" class="single-product page">
                 <div class="overlay"></div>
                 <div class="preview-large">
@@ -139,6 +136,7 @@ and open the template in the editor.
                     <span class="close-settings" id="btn-close-report">×</span>
                 </div>
             </div>
+            <!-- P L A C E -->
             <div id="place-page" class="single-product page">
                 <div class="overlay"></div>
                 <div class="preview-large">
@@ -175,14 +173,79 @@ and open the template in the editor.
                     <span class="close-settings" id="btn-close-place">×</span>
                 </div>
             </div>
+            <!-- U S E R -->
+            <div id="user-page" class="single-product page">
+                <div class="overlay"></div>
+                <div class="preview-large">
+                    <h3>USUARIOS</h3>
+                    <div class="mui-row">
+                        <div class="mui-col-md-4">
+                            <table id="table-user" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>CEDULA</th>
+                                        <th>NOMBRE COMPLETO</th>
+                                        <th>ES USUARIO?</th>
+                                        <th>COMENTARIOS</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>CEDULA</th>
+                                        <th>NOMBRE COMPLETO</th>
+                                        <th>ES USUARIO?</th>
+                                        <th>COMENTARIOS</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <span class="close-settings" id="btn-close-user">×</span>
+                </div>
+            </div>
+            <!-- U S E R   C O M M E N T S-->
+            <div id="user-comments-page" class="single-product page">
+                <div class="overlay"></div>
+                <div class="preview-large">
+                    <h3>COMENTARIOS</h3>
+                    <div class="mui-row">
+                        <input type="hidden" id="personId-comments" value="0">
+                        <input type="hidden" id="birthDate-comments" value="2000-01-01">
+                        <input type="hidden" id="expiryDate-comments" value="2000-01-01">
+                        <input type="hidden" id="gender-comments" value="N">
+                        <div class="mui-col-md-4"></div>
+                        <div class="mui-col-md-4">
+                            <div class="mui-form-group">
+                                <input type="text" class="mui-form-control" placeholder="Número Cédula" id="idNumber-comments">
+                            </div>
+                            <div class="mui-form-group">
+                                <input type="text" class="mui-form-control" placeholder="Nombre Completo" id="fullName-comments">
+                            </div>
+                            <div class="mui-select" id="mui-select-placeTo"></div>
+                            <div class="mui-form-group">
+                                <textarea class="mui-form-control" placeholder="Comentarios" id="comments-comments"></textarea>
+                            </div>
+                            <button class="mui-btn mui-btn-primary mui-btn-lg" id="btn-save-comment">AGREGAR</button>
+                        </div>
+                        <div class="mui-col-md-4"></div>
+                    </div>
+                    <span class="close-settings" id="btn-close-user-comments">×</span>
+                </div>
+            </div>
         </div>
         <div class="sidebars">
             <div id="right-sidebar" class="sidebar right">
-                <span class="close-settings" id="close-right-side-menu">×</span>
-                <a id="btn-settings" >CONFIGURACIONES</a>
-                <a id="btn-report" >REPORTE</a>
-                <a id="btn-place" >LOCALIDADES</a>
-                <a id="btn-logout" >SALIR</a>
+                <span class="close-settings" id="close-right-side-menu">×</span></br></br>
+                <button id="btn-settings" class="mui-btn mui-btn-default">CONFIGURACIONES</button>
+                <button id="btn-report" class="mui-btn mui-btn-default">REPORTE</button>
+                <button id="btn-place" class="mui-btn mui-btn-default">LOCALIDADES</button>
+                <button id="btn-user" class="mui-btn mui-btn-default">USUARIOS</button>
+                <button id="btn-user-comments" class="mui-btn mui-btn-default">COMENTARIOS</button>
+                <button id="btn-logout" class="mui-btn mui-btn-danger">SALIR</button>
             </div>
         </div>
     </body>

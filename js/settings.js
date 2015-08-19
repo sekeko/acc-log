@@ -22,8 +22,10 @@ var testDeviceConnection = function (port) {
 function gotoSettings() {
     //setCurrentDisplayName("settings");
     loadCOMPorts();
+    loadSettingOnForm();
     $('#settings-page').addClass('visible');
-};
+}
+;
 
 var closeSettings = function () {
     $('#settings-page').removeClass('visible');
@@ -42,10 +44,15 @@ var loadCOMPorts = function () {
             strControl += "</select>";
             $("#mui-select-comport-container").html(strControl);
             /*$("#mui-select-comport").change(function () {
-                var port = $('#mui-select-comport').find(":selected").text();
-                connection.connect(port);
-                console.log("-----" + $('#mui-select-comport').find(":selected").text());
-            });*/
+             var port = $('#mui-select-comport').find(":selected").text();
+             connection.connect(port);
+             console.log("-----" + $('#mui-select-comport').find(":selected").text());
+             });*/
         }
     });
+};
+
+var loadSettingOnForm = function () {
+    $('#mui-user-apiURL').val(getSetting("APIURL"));
+    $('#mui-select-comport').val(getSetting("COMPort"));
 };
