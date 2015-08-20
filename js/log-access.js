@@ -101,7 +101,8 @@ var loadUserData = function (data) {
     $("#birthDate").val(data.birth);
     $("#expiryDate").val(data.expiry);
     $("#gender").val(data.gender);
-    $("#comments").val(data.comments);
+    $("#admin-comments").val(data.comments);
+    $("#comments").val(data.lastcomment);
 };
 
 var loadUserDataFromDocument = function (data) {

@@ -16,7 +16,7 @@ var createDropdown = function (controlName, containerName, apiURL) {
 
                 });
                 strControl += "</select>";
-                $("#" + containerName).append(strControl);
+                $("#" + containerName).html(strControl);
             });
 };
 
