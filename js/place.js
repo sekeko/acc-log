@@ -12,6 +12,9 @@ $(function () {
     $("#btn-close-place").click(function () {
         closePlace();
     });
+    $("#btn-delete-place").click(function () {
+        deletePlace();
+    });
 });
 
 var closePlace = function () {
@@ -40,6 +43,16 @@ var initPlaceTable = function () {
             {"data": "comments"}
         ]
     });
+
+    $('#table-place tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        }
+        else {
+            $('#table-place').dataTable().$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
 }
 
 var loadPlaces = function (data) {
@@ -62,5 +75,22 @@ var addPlace = function () {
                 //console.log("logaccess...");
                 getPlaces();
                 //this.cleanForm();
+            });
+}
+
+var deletePlace = function () {
+    var rowData = $('#table-place').DataTable().row('.selected').data();
+    var placeToDelete = {"idPlace": rowData.id};
+    var apiURL = getSetting('APIURL') + "?method=deletePlace&post_data_string=" + JSON.stringify(placeToDelete);
+    $.getJSON(apiURL, {
+        format: "json"
+    })
+            .done(function (data) {
+                if (data.error) {
+                    console.log(data);
+                }
+                else {
+                    $('#table-place').DataTable().row('.selected').remove().draw(false);
+                }
             });
 }

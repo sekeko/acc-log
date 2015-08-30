@@ -70,7 +70,7 @@ var logout = function () {
 }
 
 var enableUserOptions = function (userType) {
-    console.log("userType=" + userType);
+    //console.log("userType=" + userType);
     if (userType === "1") {
         $("#btn-report").removeAttr("disabled");
         $("#btn-place").removeAttr("disabled");
