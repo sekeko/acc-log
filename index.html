@@ -117,13 +117,14 @@
                     <h3>REPORTE</h3>
                     <div class="mui-row">
                         <div class="mui-col-md-4">
-                            <table id="example" class="display" cellspacing="0" width="100%">
+                            <table id="table-log-access-report" class="display" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>FECHA</th>
                                         <th>TIPO</th>
                                         <th>LUGAR</th>
                                         <th>NOMBRE</th>
+                                        <th>COMENTARIO</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -132,6 +133,7 @@
                                         <th>TIPO</th>
                                         <th>LUGAR</th>
                                         <th>NOMBRE</th>
+                                        <th>COMENTARIO</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -244,11 +246,11 @@
         <div class="sidebars">
             <div id="right-sidebar" class="sidebar right">
                 <span class="close-settings" id="close-right-side-menu">×</span></br></br>
-                <button id="btn-settings" class="mui-btn mui-btn-default">CONFIGURACIONES</button>
-                <button id="btn-report" class="mui-btn mui-btn-default">REPORTE</button>
-                <button id="btn-place" class="mui-btn mui-btn-default">LOCALIDADES</button>
-                <button id="btn-user" class="mui-btn mui-btn-default">USUARIOS</button>
-                <button id="btn-user-comments" class="mui-btn mui-btn-default">COMENTARIOS</button>
+                <button id="btn-settings" class="mui-btn mui-btn-default btn-settings-width">CONFIGURACIONES</button>
+                <button id="btn-report" class="mui-btn mui-btn-default btn-settings-width" disabled>REPORTE</button>
+                <button id="btn-place" class="mui-btn mui-btn-default btn-settings-width" disabled>LOCALIDADES</button>
+                <button id="btn-user" class="mui-btn mui-btn-default btn-settings-width" disabled>USUARIOS</button>
+                <button id="btn-user-comments" class="mui-btn mui-btn-default btn-settings-width" disabled>COMENTARIOS</button>
                 <button id="btn-logout" class="mui-btn mui-btn-danger">SALIR</button>
             </div>
         </div>

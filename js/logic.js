@@ -150,9 +150,9 @@ SerialConnection.prototype.onReceiveError = function (errorInfo) {
 };
 
 SerialConnection.prototype.connect = function (path) {
-    console.log("path:" + path);
+    //console.log("path:" + path);
     if (path === undefined || path === "") {
-        console.log("No COM port configured!");
+        //console.log("No COM port configured!");
         showErrorMessage("main-error-message", " No COM port configured! ");
     }
     else {

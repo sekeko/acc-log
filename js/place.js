@@ -34,7 +34,6 @@ var getPlaces = function () {
 
 var initPlaceTable = function () {
     $('#table-place').dataTable({
-        //"data": data,
         "columns": [
             {"data": "id"},
             {"data": "name"},

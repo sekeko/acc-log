@@ -38,7 +38,7 @@ var cleanErrorMessage = function (labelName) {
 
 var saveSettings = function (settings) {
     chrome.storage.local.set({"settings": JSON.parse(settings)}, function () {
-        console.log('Settings saved');
+        //console.log('Settings saved');
     });
 };
 
@@ -57,7 +57,7 @@ var getSetting = function (name) {
 
 var loadSettingsMemory = function () {
     chrome.storage.local.get("settings", function (result) {
-        console.log(result);
+        //console.log(result);
         //console.log(result.settings[name]);
         appAPIURL = result.settings["APIURL"];
         appCOMPort = result.settings["COMPort"];

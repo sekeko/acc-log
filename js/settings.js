@@ -1,6 +1,5 @@
 $(function () {
     $("#btn-settings").click(function () {
-        console.log("click on btn-settings");
         gotoSettings();
     });
 
@@ -10,6 +9,7 @@ $(function () {
             'COMPort': $('#mui-select-comport').find(":selected").text(),
         });
         saveSettings(settings);
+        loadSettingsMemory();
         closeSettings();
     });
 

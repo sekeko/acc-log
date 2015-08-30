@@ -1,9 +1,10 @@
 $(function () {
     $("#idNumber").change(function () {
         var userNumber = $("#idNumber").val();
-        console.log("userNumber=" + userNumber);
-        getUserByNumber(userNumber);
-        //loginUser(userNumber);
+        //console.log("userNumber=" + userNumber);
+        if (userNumber !== "") {
+            getUserByNumber(userNumber);
+        }
     });
 
     $("#btn-in").click(function () {
@@ -14,7 +15,7 @@ $(function () {
     });
 });
 
-var cleanForm = function () {
+var clearForm = function () {
     $('#personId').val('');
     $('#expiryDate').val('');
     $('#birthDate').val('');
@@ -22,6 +23,7 @@ var cleanForm = function () {
     $('#idNumber').val('');
     $('#fullName').val('');
     $('#comments').val('');
+    $('#admin-comments').val('');
 };
 
 var addPerson = function (personToAdd, accessType) {
@@ -42,8 +44,8 @@ var addPerson = function (personToAdd, accessType) {
                     comments: $('#comments').val()
                 };
                 logPersonAccess(accValues);
-                console.log(data);
-                cleanForm();
+                //console.log(data);
+                clearForm();
             });
 }
 
@@ -68,7 +70,7 @@ var checkIfPersonExists = function (accessType) {
             updatedBy: getUserIdLogged(),
             comments: $('#comments').val()
         };
-        addPerson(personValues,accessType);
+        addPerson(personValues, accessType);
     }
     else {
         logPersonAccess(accValues);
@@ -84,7 +86,7 @@ var logPersonAccess = function (accValues) {
             .done(function (data) {
                 //console.log("logaccess...");
                 //console.log(data);
-                cleanForm();
+                clearForm();
             });
 }
 
@@ -122,8 +124,10 @@ var getUserByNumber = function (userNumber, person) {
             .done(function (data) {
                 //console.log(data);
                 if (data.person.id === 0) {
-                    loadUserDataFromDocument(person);
-                    console.log('no person found');
+                    //console.log('no person found');
+                    if (person) {
+                        loadUserDataFromDocument(person);
+                    }
                 }
                 else {
                     loadUserData(data.person);

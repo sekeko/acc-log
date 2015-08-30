@@ -1,6 +1,6 @@
 {
-  "name": "ACCESS APP",
-  "description": "Control de Acceso",
+  "name": "BITACORA",
+  "description": "BITACORA - Control de Acceso",
   "version": "0.1",
   "manifest_version": 2,
   "app": {

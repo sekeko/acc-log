@@ -232,6 +232,11 @@ header, #sidedrawer {
 
 
 /************S I D E B A R************************************************************/
+
+.btn-settings-width{
+    width: 200px;
+}
+
 .sidebar.left {
     position: fixed;
     top: 0;

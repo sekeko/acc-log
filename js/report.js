@@ -6,18 +6,9 @@
 
 $(function () {
 
-    $('#example').dataTable({
-        "ajax": 'http://localhost:81/acc-log-api/?method=getAccessLog',
-        "columns": [
-            {"data": "FECHA"},
-            {"data": "TIPO"},
-            {"data": "LUGAR"},
-            {"data": "NOMBRE"}
-        ]
-    });
+    loadReportCurrentDay();
 
     $("#btn-report").click(function () {
-        console.log("click on btn-report");
         gotoReport();
     });
 
@@ -31,7 +22,38 @@ var closeReport = function () {
 };
 
 var gotoReport = function () {
+    getReportData();
     $('#report-page').addClass('visible');
 };
 
+var loadReportCurrentDay = function () {
+    $('#table-log-access-report').dataTable({
+        "columns": [
+            {"data": "FECHA"},
+            {"data": "TIPO"},
+            {"data": "LUGAR"},
+            {"data": "NOMBRE"},
+            {"data": "COMENTARIO"}
+        ]
+    });
+}
 
+var getReportData = function () {
+    var dateRange = {fromDate: new Date().toString('yyyy-M-d 00:00:00'),
+        toDate: new Date().toString('yyyy-M-d 59:59:59')};
+    var apiURL = getSetting('APIURL') + "?method=getAccessLog&post_data_string=" + JSON.stringify(dateRange);
+    $.getJSON(apiURL, {
+        format: "json"
+    })
+            .done(function (data) {
+                refreshReport(data.data);
+            });
+}
+
+var refreshReport = function (data) {
+
+    var oTable = $('#table-log-access-report').dataTable();
+    oTable.fnClearTable();
+    oTable.fnAddData(data);
+    oTable.fnDraw();
+}
