@@ -57,7 +57,6 @@ var initPlaceTable = function () {
 
 var loadPlaces = function (data) {
     var oTable = $('#table-place').dataTable();
-    // Immediately 'nuke' the current rows (perhaps waiting for an Ajax callback...)
     oTable.fnClearTable();
     oTable.fnAddData(data);
     oTable.fnDraw();

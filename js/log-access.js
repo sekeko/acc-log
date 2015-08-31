@@ -27,9 +27,7 @@ var clearForm = function () {
 };
 
 var addPerson = function (personToAdd, accessType) {
-    //"number":"111010745","fullname":"111010745","birth":"111010745","expiry":"111010745","gender":"M","comments":"111010745","updatedBy":"111010745"
     var apiURL = getSetting('APIURL') + "?method=addperson&post_data_string=" + JSON.stringify(personToAdd);
-    //console.log(apiURL);
     $.getJSON(apiURL, {
         format: "json"
     })

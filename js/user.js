@@ -10,8 +10,27 @@ $(function () {
     $("#btn-close-user").click(function () {
         closeUser();
     });
-    $("#btn-set-user-type").click(function () {
-        console.log(this)
+
+    $("#btn-user-admin").click(function () {
+        setUserType(1);
+    });
+
+    $("#btn-user-supervisor").click(function () {
+        setUserType(2);
+    });
+
+    $("#btn-user-operator").click(function () {
+        setUserType(3);
+    });
+
+    $('#table-user').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        }
+        else {
+            $('#table-user  ').dataTable().$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
     });
 });
 
@@ -35,41 +54,44 @@ var getUsers = function () {
 
 var initUserTable = function () {
     $('#table-user').dataTable({
-        //"data": data,
+        "pageLength": 5,
         "columns": [
             {"data": "id"},
             {"data": "number"},
             {"data": "fullname"},
             {"data": "isSystemUser"},
-            {"data": "comments"},
-            {"data": "id"}
-        ],
-        "columnDefs": [
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var toRender = "<a id='btn-set-user-type' data-user-type='1' data-user-id='"+data+"' onclick='setUserType(1,"+data+")'>A</a>&nbsp;&nbsp;";
-                    toRender += "<a id='btn-set-user-type' data-user-type='2' data-user-id='"+data+"'>S</a>&nbsp;&nbsp;";
-                    toRender += "<a id='btn-set-user-type' data-user-type='3' data-user-id='"+data+"'>O</a>";
-                    return toRender;
-                },
-                "targets": 5
-            },
+            {"data": "comments"}
         ]
     });
 }
 
-var setUserType = function(userid, usertype){
-    console.log("userid = "+userid);
-    console.log("usertype = "+usertype);
+var setUserType = function (userid, usertype) {
+    console.log("userid = " + userid);
+    console.log("usertype = " + usertype);
 }
 
 var loadUsers = function (data) {
     var oTable = $('#table-user').dataTable();
-    // Immediately 'nuke' the current rows (perhaps waiting for an Ajax callback...)
     oTable.fnClearTable();
     oTable.fnAddData(data);
     oTable.fnDraw();
 }
+
+var setUserType = function (type) {
+    var rowData = $('#table-user').DataTable().row('.selected').data();
+    if (rowData) {
+        var userData = {
+            "idPerson": rowData.id
+            , "userType": type
+            , "updatedBy": getUserIdLogged()
+        };
+        var apiURL = getSetting('APIURL') + "?method=setUserType&post_data_string=" + JSON.stringify(userData);
+        //console.log(apiURL);
+        $.getJSON(apiURL, {
+            format: "json"
+        })
+                .done(function (data) {
+                    getUsers();
+                });
+    }
+};

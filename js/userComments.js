@@ -2,9 +2,7 @@ $(function () {
 
     $("#idNumber-comments").change(function () {
         var userNumber = $("#idNumber-comments").val();
-        console.log("userNumber=" + userNumber);
         searchUserByNumber(userNumber);
-        //loginUser(userNumber);
     });
 
     $("#btn-user-comments").click(function () {
@@ -28,7 +26,6 @@ var gotoUserComments = function () {
 };
 
 var searchUserByNumber = function (userNumber) {
-    //?method=getPersonByNumber&post_data_string={%22user_number%22:%22" + userNumber + "%22}
     var apiURL = getSetting('APIURL') + "?method=getPersonByNumber&post_data_string={%22user_number%22:%22" + userNumber + "%22}";
     $.getJSON(apiURL, {
         format: "json"
@@ -56,21 +53,24 @@ var loadFoundUserData = function (data) {
 };
 
 var setPersonComments = function () {
-    var userCommentsToUpdate = {
-        "idPerson": $("#personId-comments").val()
-        , "comments": $("#comments-comments").val()
-        , "updatedBy": getUserIdLogged()
-    };
-    var apiURL = getSetting('APIURL') + "?method=setPersonComment&post_data_string=" + JSON.stringify(userCommentsToUpdate);
-    //console.log(apiURL);
-    $.getJSON(apiURL, {
-        format: "json"
-    })
-            .done(function (data) {
-                //console.log("logaccess...");
-                console.log(data);
-                cleanCommentsForm();
-            });
+    if ($("#personId-comments").val() !== "0") {
+        var userCommentsToUpdate = {
+            "idPerson": $("#personId-comments").val()
+            , "comments": $("#comments-comments").val()
+            , "updatedBy": getUserIdLogged()
+        };
+        var apiURL = getSetting('APIURL') + "?method=setPersonComment&post_data_string=" + JSON.stringify(userCommentsToUpdate);
+        $.getJSON(apiURL, {
+            format: "json"
+        })
+                .done(function (data) {
+                    cleanCommentsForm();
+                });
+    }
+    else {
+        console.log("new person needed");
+        addNewPersonWithComment();
+    }
 }
 
 var cleanCommentsForm = function () {
@@ -81,4 +81,26 @@ var cleanCommentsForm = function () {
     $("#expiryDate-comments").val("");
     $("#gender-comments").val("");
     $("#comments-comments").val("");
+}
+
+var addNewPersonWithComment = function () {
+    var personValues = {
+        number: $('#idNumber-comments').val(),
+        fullname: $('#fullName-comments').val(),
+        birth: $("#birthDate-comments").val(),
+        expiry: $("#expiryDate-comments").val(),
+        gender: $("#gender-comments").val(),
+        updatedBy: getUserIdLogged(),
+        comments: $('#comments-comments').val()
+    };
+
+    var apiURL = getSetting('APIURL') + "?method=addperson&post_data_string=" + JSON.stringify(personValues);
+
+    $.getJSON(apiURL, {
+        format: "json"
+    })
+            .done(function (data) {
+                cleanCommentsForm();
+            });
+
 }

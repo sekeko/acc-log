@@ -67,17 +67,24 @@ var logout = function () {
     $('.log-access').removeClass('visible');
     setCurrentDisplayName("login");
     disableUserOptions();
-}
+};
 
 var enableUserOptions = function (userType) {
-    //console.log("userType=" + userType);
-    if (userType === "1") {
+    if (userType === "3") {
         $("#btn-report").removeAttr("disabled");
-        $("#btn-place").removeAttr("disabled");
-        $("#btn-user").removeAttr("disabled");
+    }
+    if (userType === "2") {
+        $("#btn-report").removeAttr("disabled");
         $("#btn-user-comments").removeAttr("disabled");
     }
-}
+    if (userType === "1") {
+        $("#btn-report").removeAttr("disabled");
+        $("#btn-user-comments").removeAttr("disabled");
+        $("#btn-place").removeAttr("disabled");
+        $("#btn-user").removeAttr("disabled");
+    }
+
+};
 
 var disableUserOptions = function () {
     $("#btn-report").attr("disabled", "disabled");
