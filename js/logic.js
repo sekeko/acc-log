@@ -176,6 +176,23 @@ SerialConnection.prototype.disconnect = function () {
     });
 };
 
+SerialConnection.prototype.disconnectAll = function () {
+    serial.getConnections(function (arrConnectionInfo){
+            for (i = 0; i < arrConnectionInfo.length; i++) { 
+                console.log("connectionId:" + arrConnectionInfo[i].connectionId);
+                serial.disconnect(arrConnectionInfo[i].connectionId, function (){
+                    console.log("disconnect process");
+                });
+            }
+            /*
+            console.log('----------');
+            console.log(arrConnectionInfo);
+            console.log('----------');		
+            */
+
+    });
+};
+
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 

@@ -63,6 +63,9 @@ var loadSettingsMemory = function () {
         appCOMPort = result.settings["COMPort"];
 
         var connection = new SerialConnection();
+        
+        connection.disconnectAll();
+        
         connection.onConnect.addListener(function () {
             log('connected to: ' + getSetting('COMPort'));
         });
@@ -70,7 +73,7 @@ var loadSettingsMemory = function () {
             log('read line: ' + line);
         });
         connection.connect(getSetting('COMPort'));
-
+        
     });
 }
 

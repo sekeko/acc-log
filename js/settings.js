@@ -22,7 +22,9 @@ var testDeviceConnection = function (port) {
 function gotoSettings() {
     //setCurrentDisplayName("settings");
     loadCOMPorts();
-    loadSettingOnForm();
+	//loadUSBDevices();
+	//loadHIDDevices();
+    //loadSettingOnForm();
     $('#settings-page').addClass('visible');
 }
 ;
@@ -30,6 +32,39 @@ function gotoSettings() {
 var closeSettings = function () {
     $('#settings-page').removeClass('visible');
 };
+/*
+var loadUSBDevices = function(){
+	var vendorid = parseInt( '0C2E', 16 );
+	var productid = parseInt( '0200', 16 );
+	
+	chrome.usb.getDevices({"vendorId": vendorid, "productId": productid}, function(found_devices) {
+	  if (chrome.runtime.lastError != undefined) {
+		console.warn('chrome.usb.getDevices error: ' +
+					 chrome.runtime.lastError.message);
+		return;
+	  }
+	  else{
+		console.log(found_devices);
+	  }
+	});
+}
+*/
+var loadHIDDevices = function(){
+	var vendorid = parseInt( '0C2E', 16 );
+	var productid = parseInt( '0200', 16 );
+	chrome.hid.getDevices({"vendorId": 0x0C2E, "productId": 0x0200}, function(found_devices) {
+	  if (chrome.runtime.lastError != undefined) {
+		console.warn('chrome.usb.getDevices error: ' +
+					 chrome.runtime.lastError.message);
+		return;
+	  }
+	  else{
+		console.log(found_devices);
+	  }
+	});
+	
+}
+
 
 var loadCOMPorts = function () {
     chrome.serial.getDevices(function (ports) {
